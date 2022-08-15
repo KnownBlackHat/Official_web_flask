@@ -35,4 +35,4 @@ def join():
     return render_template('join.html', title="Join Us", joiact = "active")
     
 if __name__=="__main__":
-    app.run(debug=True,port=80)
+    app.run()
