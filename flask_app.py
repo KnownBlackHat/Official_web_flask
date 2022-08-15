@@ -1,5 +1,6 @@
-from turtle import title
-from flask import Flask,render_template
+import json
+from textwrap import indent
+from flask import Flask,render_template,request
 
 app=Flask(__name__)
 
@@ -12,13 +13,21 @@ def index():
 def contact():
     return render_template('contact.html', title="Contact Us", conact = "active")
 
-@app.route('/login')
+@app.route('/login', methods= ["GET", "POST"] )
 def login():
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        with open('data.json','r') as file:
+            data = json.load(file)
+        data[email]={}
+        data[email]["password"] = password
+        json.dump(data,open('data.json','w'),indent=2)
     return render_template('login.html', title="Log In", logact = "active")
 
-@app.route('/signin')
-def signin():
-    return render_template('signin.html', title="Sign In", sigact = "active")
+@app.route('/signup')
+def signup():
+    return render_template('signup.html', title="Sign Up", sigact = "active")
     
     
 @app.route('/join')
