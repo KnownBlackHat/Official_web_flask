@@ -18,13 +18,24 @@ def login():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
+        print(email ,password)
         with open('data.json','r') as file:
             data = json.load(file)
-        data[email]={}
-        data[email]["password"] = password
-        json.dump(data,open('data.json','w'),indent=2)
+        try:
+            if email == data[email] and password == data[password]:
+                print("correct")
+                return "<script>alert('logged in succesfully')</script>"
+            # else:
+            #     print("wrong")
+            #     return "<script>alert('Wrong id or password')</script>"
+        # data[email]={}
+        # data[email]["password"] = password
+        # json.dump(data,open('data.json','w'),indent=2)
+        except KeyError:
+                print("wrong")
+                return "<script>alert('Wrong id or password')</script>" 
+                
     return render_template('login.html', title="Log In", logact = "active")
-
 @app.route('/signup')
 def signup():
     return render_template('signup.html', title="Sign Up", sigact = "active")
@@ -43,5 +54,4 @@ def keep_alive():
     server = Thread(target=run)
     server.start()
 if __name__ == "__main__":
-    print(__name__)
-    app.run()
+    app.run(debug=True,host="0.0.0.0", port=80)
