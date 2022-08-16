@@ -1,5 +1,5 @@
 import json
-from textwrap import indent
+from threading import Thread
 from flask import Flask,render_template,request
 
 app=Flask(__name__)
@@ -28,11 +28,20 @@ def login():
 @app.route('/signup')
 def signup():
     return render_template('signup.html', title="Sign Up", sigact = "active")
-    
-    
+
+
 @app.route('/join')
 def join():
     return render_template('join.html', title="Join Us", joiact = "active")
-    
-if __name__=="__main__":
+
+
+
+def run():
+    app.run(host="0.0.0.0", port=80)
+
+def keep_alive():
+    server = Thread(target=run)
+    server.start()
+if __name__ == "__main__":
+    print(__name__)
     app.run()
