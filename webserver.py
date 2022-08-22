@@ -18,24 +18,22 @@ def login():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
-        print(email ,password)
         with open('data.json','r') as file:
             data = json.load(file)
+        print(email ,password)
+        # print(data[0])
         try:
-            if email == data[email] and password == data[password]:
-                print("correct")
-                return "<script>alert('logged in succesfully')</script>"
-            # else:
-            #     print("wrong")
-            #     return "<script>alert('Wrong id or password')</script>"
-        # data[email]={}
-        # data[email]["password"] = password
-        # json.dump(data,open('data.json','w'),indent=2)
-        except KeyError:
-                print("wrong")
-                return "<script>alert('Wrong id or password')</script>" 
-                
-    return render_template('login.html', title="Log In", logact = "active")
+            if email == data[email]["email"] and password == data[email]["password"]:
+                print("found")
+                return render_template('login.html', title="Log In", logact = "active", login=True)
+            else:
+                print("Not Found")
+                return render_template('login.html', title="Log In", logact = "active", login=False)
+        except:
+            print("Error Found")
+            return render_template('login.html', title="Log In", logact = "active", login=False)
+    else:
+        return render_template('login.html', title="Log In", logact = "active")
 @app.route('/signup')
 def signup():
     return render_template('signup.html', title="Sign Up", sigact = "active")
