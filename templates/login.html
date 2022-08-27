@@ -1,18 +1,17 @@
 {% extends "layout.html" %}
 {% block body %}
 
-
+<br><br>
 <main role="main" class="inner cover">
       <div>
       <form class="form-signin" action="/login" method="post">
-        <img class="mb-4" src="https://cdn.discordapp.com/icons/887038417756639263/4b3931494bccada9b39caa2776c73153.webp?size=100" alt="" width="72" height="72">
+        <br><br><h1><b>LOGIN </b></h1><br><br>
         <h1 class="h3 mb-3 font-weight-normal">
-
           <!-- login response logic-->
           {% if login==True   %}
-          logged in 
+          <script>alert("Logged In")</script>
           {% elif login==False %}
-          Wrong credentials 
+          <script>alert("Wrong Credentials")</script>
           {% else %}
           {% endif %}
 
