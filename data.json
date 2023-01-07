@@ -1,4 +1,12 @@
-{"t@gmail.com": {"email":"t@gmail.com","password":"hi"},
-"tejas@gmail.com": {"email":"tejas@gmail.com","password":"hello"}
-
+{
+    "test@test.com": {
+        "email": "test@test.com",
+        "name": "test1",
+        "password": "8e3491d91e922fe553c1a442a8623f88e3501785349d5228aabbc112524717e4"
+    },
+    "test1@test.com": {
+        "email": "test1@test.com",
+        "name": "test1",
+        "password": "8e3491d91e922fe553c1a442a8623f88e3501785349d5228aabbc112524717e4"
+    }
 }

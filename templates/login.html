@@ -7,11 +7,21 @@
       <form class="form-signin" action="/login" method="post">
         <br><br><h1><b>LOGIN </b></h1><br><br>
         <h1 class="h3 mb-3 font-weight-normal">
+
+        <div id="error"></div>
           <!-- login response logic-->
           {% if login==True   %}
-          <script>alert("Logged In")</script>
+          <script>
+
+            document.querySelector("#error").innerHTML="Sucessfully Logged In"
+          
+          </script>
           {% elif login==False %}
-          <script>alert("Wrong Credentials")</script>
+          <script>
+
+            document.querySelector("#error").innerHTML="Wrong Credentials"
+          
+          </script>
           {% else %}
           {% endif %}
 
