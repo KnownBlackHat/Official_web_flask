@@ -2,27 +2,11 @@ import hashlib
 import json
 from threading import Thread
 from flask import Flask,render_template,request
+from security import hash,authenticate
 
 app=Flask(__name__)
-
-
-# TODO: Replace following function in another file
-def hash(password):
-    password_bytes = password.encode("utf-8")
-    salt_bytes = "test_salt".encode("utf-8")
-    return hashlib.sha256(salt_bytes+password_bytes).hexdigest()
-
-def authenticate(email,password):
-    with open('data.json','r') as file:
-        data = json.load(file)
-    if data.get(email) and data[email]["email"]==email and data[email]["password"]==password:
-        return render_template('login.html',title="Log In", logact = "active", login=True)
-    else:
-        return render_template('login.html',title="Log In", logact = "active", login=False)
-
-
-
 @app.route('/')
+
 def index():
     return render_template("index.html", title="4FARMY" , indact = "active")
 
@@ -68,12 +52,5 @@ def join():
     return render_template('join.html', title="Join Us", joiact = "active")
 
 
-
-def run():
-    app.run(host="0.0.0.0", port=80)
-
-def keep_alive():
-    server = Thread(target=run)
-    server.start()
 if __name__ == "__main__":
     app.run(debug=True,host="0.0.0.0", port=80)
