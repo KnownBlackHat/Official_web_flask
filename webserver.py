@@ -8,12 +8,12 @@ app=Flask(__name__)
 @app.route('/')
 
 def index():
-    return render_template("index.html", title="4FARMY" , indact = "active")
+    return render_template("index.html", title="4FARMY" )
 
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html', title="Contact Us", conact = "active")
+    return render_template('contact.html', title="Contact Us")
 
 
 @app.route('/login', methods= ["GET", "POST"] )
@@ -23,7 +23,7 @@ def login():
         password = hash(request.form.get('password'))
         return authenticate(email,password)
     else:
-        return render_template('login.html', title="Log In", logact = "active")
+        return render_template('login.html', title="Log In")
 
 @app.route('/signup',methods=['POST','GET'])
 def signup():
@@ -33,7 +33,7 @@ def signup():
         name = request.form.get('Name')
         email = request.form.get('Email')
         if data.get(email):
-            return render_template('signup.html', title="Sign Up", logact = "active",account_exist=True)
+            return render_template('signup.html', title="Sign Up",account_exist=True)
         password = hash(request.form.get('Password'))
         data[email]={}
         data[email]["email"]=email
@@ -42,14 +42,14 @@ def signup():
         with open('data.json','w') as file:
             json.dump(data,file)
         
-        return render_template('login.html', title="home", logact = "active",login=True)
+        return render_template('login.html', title="home",login=True)
     else:    
-        return render_template('signup.html', title="Sign Up", sigact = "active")
+        return render_template('signup.html', title="Sign Up")
 
 
 @app.route('/join')
 def join():
-    return render_template('join.html', title="Join Us", joiact = "active")
+    return render_template('join.html', title="Join Us")
 
 
 if __name__ == "__main__":

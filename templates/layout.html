@@ -15,17 +15,29 @@
 			border-bottom: solid white 4px;
 				}
 	</style>
+	<script>
+		function check_active_nav_bar () {
+						const current_path = window.location.pathname;
+						const link = document.querySelectorAll("nav a")
+						
+						link.forEach((link)=>{ 
+												
+									if ( link.getAttribute("href") === current_path ) { link.classList.add("active") }
+
+								})
+				}
+	</script>
   </head>
 
-<body class="subpixel-antialiased text-white ">
+<body class="subpixel-antialiased text-white" onload="check_active_nav_bar()">
 
 	<nav class="flex justify-between text-white mt-9">
-		<span class="px-2 ml-20 text-2xl border-4 rounded"> 4FARMY </span>
-		<span class="flex font-semibold space-x-11 pr-10">
-			<a href="/" class=" {{ indact }} cursor-pointer hover:border-b-4 hover:border-slate-700">Home</a>
-			<a href="/login" class=" {{ logact }} cursor-pointer hover:border-b-4 hover:border-slate-700">Log In</a>
-			<a href="/signup" class=" {{ sigact }} cursor-pointer hover:border-b-4 hover:border-slate-700">Sign Up</a>
-			<a href="/join" class=" {{ joiact }} cursor-pointer hover:border-b-4 hover:border-slate-700">Join Us</a>
+		<span class="m-auto px-2 md:ml-20 md:mr-20  mb-0 text-2xl border-4 rounded"> 4FARMY </span>
+		<span class="flex hidden font-semibold space-x-11 pr-10 md:block">
+			<a href="/" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Home</a>
+			<a href="/login" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Log In</a>
+			<a href="/signup" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Sign Up</a>
+			<a href="/join" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Join Us</a>
 		</span>
 	</nav>
 	<main>
