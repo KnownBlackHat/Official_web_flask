@@ -1,12 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<br><br>
-<main role="main" class="inner cover">
-      <div>
-      <form class="form-signin" action="/login" method="post">
-        <br><br><h1><b>LOGIN </b></h1><br><br>
-        <h1 class="h3 mb-3 font-weight-normal">
+      <div id="form" class="flex flex-row items-center justify-center w-screen h-screen text-center">
+		<form class="flex flex-col items-center justify-center p-5 bg-transparent border-4 rounded-lg md:w-1/4 md:h-1/2 md:text-2xl -translate-y-24" action="/login" method="post">
+		  <h1 class="mt-2 text-2xl underline md:text-4xl"><b>LOGIN </b></h1>
 
         <div id="error"></div>
           <!-- login response logic-->
@@ -26,12 +23,11 @@
           {% endif %}
 
 
-        </h1>
         <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+      <input type="email" id="inputEmail" name="email" class="p-1 my-4 mt-[3rem] text-black text-center rounded-md" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
+      <input type="password" id="inputPassword" name="password" class="p-1 my-4 text-center text-black rounded-md" placeholder="Password" required>
+      <div class="mb-3 checkbox">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
