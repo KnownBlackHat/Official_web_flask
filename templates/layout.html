@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
-	<link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" media="all">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" media="all"> -->
 	<title>{{ title }}</title>
 	<style>
 		body {
@@ -16,33 +16,55 @@
 			border-bottom: solid white 4px;
 				}
 	</style>
-	<script>
-		function check_active_nav_bar () {
-						const current_path = location.pathname;
-						const link = document.querySelectorAll("nav a")
-						
-						link.forEach((link)=>{ 
-												
-									if ( link.getAttribute("href") === current_path ) { link.classList.add("active") }
+	  </head>
 
-								})
-				}
-	</script>
-  </head>
+<body class="subpixel-antialiased text-white bg-cover" onload="check_active_nav_bar()">
 
-<body class="subpixel-antialiased text-white" onload="check_active_nav_bar()">
+	<nav class="flex items-center justify-between p-4 text-white">
 
-	<nav class="flex justify-between text-white mt-9">
-		<span class="m-auto px-2 md:ml-20 md:mr-20  mb-0 text-2xl border-4 rounded"> 4FARMY </span>
-		<span class="flex hidden font-semibold space-x-11 pr-10 md:block">
-			<a href="/" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Home</a>
-			<a href="/login" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Log In</a>
-			<a href="/signup" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Sign Up</a>
-			<a href="/join" class="cursor-pointer hover:border-b-4 hover:border-slate-700 pb-2 rounded">Join Us</a>
-		</span>
+		<div id="hambuger" class="z-50 p-1 border-2 rounded-full md:hidden transition duration-500" onclick="hambuger_toggle()">
+			<div class="w-6 h-0.5 my-1 rounded-full bg-white"></div>
+			<div class="w-6 h-0.5 my-1 rounded-full bg-white"></div>
+			<div class="w-6 h-0.5 my-1 rounded-full bg-white"></div>
+		</div>
+
+		<div id="logo" class="px-4 text-2xl border-4 rounded md:ml-20 duration-1000"> 4FARMY </div>
+
+		<div id="logout"></div>
+		
+		<div id="normal-nav" class="absolute items-center md:static md:block -translate-x-[44rem] transistion-all duration-500 md:translate-x-0" >
+		<ul class="flex items-center p-4 font-semibold space-x-11">
+			<li></li> <!-- Intentionally extra li added for space-x-11 class-->
+			<li><a href="/" class="pb-2 rounded cursor-pointer hover:border-b-4 hover:border-slate-700">Home</a></li>
+			<li><a href="/login" class="pb-2 rounded cursor-pointer hover:border-b-4 hover:border-slate-700">Log In</a></li>
+			<li><a href="/signup" class="pb-2 rounded cursor-pointer hover:border-b-4 hover:border-slate-700">Sign Up</a></li>
+			<li><a href="/join" class="pb-2 rounded cursor-pointer hover:border-b-4 hover:border-slate-700">Join Us</a></li>
+		</ul>
+		</div>
+
 	</nav>
+
 	<main>
 		{% block body %} {% endblock %}
 	</main>
+
 </body>
+<script>
+		function check_active_nav_bar () {
+						const current_path = location.pathname;
+						const link = document.querySelectorAll("nav a");
+						link.forEach((link)=>{if ( link.getAttribute("href") === current_path ) { link.classList.add("active") }})
+				}
+		
+		function hambuger_toggle () {
+							document.querySelector('#logo').classList.toggle('blur');
+							document.querySelector('#logo').classList.toggle('opacity-0');
+							// document.querySelector('#normal-nav').classList.toggle('hidden');
+							document.querySelector('#normal-nav').classList.add('text-sm');
+							document.querySelector('#hambuger').classList.toggle('rotate-90');
+							document.querySelector('#normal-nav').classList.toggle('translate-x-0');
+						  }
+
+	</script>
+
 </html>
