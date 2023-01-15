@@ -2,18 +2,21 @@
 {% block body %}
 
       <div id="form" class="flex flex-row items-center justify-center w-screen h-screen text-center">
-		<form class="flex flex-col items-center justify-center p-5 bg-transparent border-4 rounded-lg md:w-1/4 md:h-1/2 md:text-2xl -translate-y-24" action="/login" method="post">
-		  <h1 class="mt-2 text-2xl underline md:text-4xl"><b>LOGIN </b></h1>
+		<form class="flex flex-col items-center justify-center p-5 border-4 rounded-lg shadow-lg bg-black/70 shadow-black md:w-1/4" action="/login" method="post">
 
-        <div id="error"></div>
+<img class="mb-4 rounded-full shadow-md shadow-black" src="https://cdn.discordapp.com/icons/887038417756639263/4b3931494bccada9b39caa2776c73153.webp?size=100" alt="" width="72" height="72">
+
+		  <h1 class="mb-3 underline md:text-2xl"><b>LOGIN </b></h1>
+
+        <div id="error" class="my-2 font-bold text-red-500"></div>
+		<script>
+				const target = document.querySelector("#error");
+				const observer = new MutationObserver(()=>{ target.classList.add("animate-shake"); setTimeout(()=>{ target.classList.remove("animate-shake") },2000)})
+				const config = { attributes: false, childList: true, subtree:false }
+				observer.observe(target,config) 
+		</script>
           <!-- login response logic-->
-          {% if login==True   %}
-          <script>
-
-            document.querySelector("#error").innerHTML="Sucessfully Logged In"
-          
-          </script>
-          {% elif login==False %}
+        {% if login==False %}
           <script>
 
             document.querySelector("#error").innerHTML="Wrong Credentials"
@@ -24,15 +27,15 @@
 
 
         <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" name="email" class="p-1 my-4 mt-[3rem] text-black text-center rounded-md" placeholder="Email address" required autofocus>
+      <input type="email" id="inputEmail" name="email" class="p-1 my-4 mt-2 text-center text-black shadow-md shadow-black rounded-md" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="password" class="p-1 my-4 text-center text-black rounded-md" placeholder="Password" required>
+      <input type="password" id="inputPassword" name="password" class="p-1 my-4 text-center text-black shadow-md shadow-black rounded-md" placeholder="Password" required>
       <div class="mb-3 checkbox">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="px-4 py-2 mt-2 bg-gray-900 rounded shadow shadow-black transition hover:-translate-y-1 duration-300" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
   </div>

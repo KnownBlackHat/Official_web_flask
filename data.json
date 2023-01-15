@@ -1,12 +1,1 @@
-{
-    "test@test.com": {
-        "email": "test@test.com",
-        "name": "test1",
-        "password": "8e3491d91e922fe553c1a442a8623f88e3501785349d5228aabbc112524717e4"
-    },
-    "test1@test.com": {
-        "email": "test1@test.com",
-        "name": "test1",
-        "password": "8e3491d91e922fe553c1a442a8623f88e3501785349d5228aabbc112524717e4"
-    }
-}
+{"test@test.com": {"email": "test@test.com", "name": "test1", "password": "8e3491d91e922fe553c1a442a8623f88e3501785349d5228aabbc112524717e4"}, "test1@test.com": {"email": "test1@test.com", "name": "test1", "password": "8e3491d91e922fe553c1a442a8623f88e3501785349d5228aabbc112524717e4"}, "test1@test.cm": {"email": "test1@test.cm", "name": "123", "password": "75418a1bb711abe7b2f497f60a1a9b9761cca8be9698ca2daa56a7ae2bb22f34"}}

@@ -1,27 +1,31 @@
 {% extends "layout.html" %}
 {% block body %}
-<main role="main" class="inner cover">
-      <div>
-      <form class="form-signin" action="/signup" method="post">
-        <img class="mb-4" src="https://cdn.discordapp.com/icons/887038417756639263/4b3931494bccada9b39caa2776c73153.webp?size=100" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Create your account</h1>
-        <div id="error"></div>
+      <div id="form" class="flex flex-row items-center justify-center w-screen h-screen text-center">
+      <form class="flex flex-col items-center justify-center p-5 border-4 rounded-lg shadow-lg bg-black/70 shadow-black md:w-1/4" action="/signup" method="post">
 
+        <img class="mb-4 rounded-full shadow-md shadow-black" src="https://cdn.discordapp.com/icons/887038417756639263/4b3931494bccada9b39caa2776c73153.webp?size=100" alt="" width="72" height="72">
+        <h1 class="mb-3 underline md:text-2xl">Create your account</h1>
+		<div id="error" class="font-bold text-red-500"></div>
+			<script>
+				const target = document.querySelector("#error");
+				const observer = new MutationObserver(()=>{ target.classList.add("animate-shake"); setTimeout(()=>{ target.classList.remove("animate-shake") },2000)})
+				const config = { attributes: false, childList: true, subtree:false }
+				observer.observe(target,config) 
+			</script>
         <label for="name" class="sr-only">User Name</label>
-      
-        <input type="text" id="name" name="Name" class="form-control" placeholder="User Name" required autofocus>
+        <input type="text" id="name" name="Name" class="p-1 my-4 mt-2 text-center text-black shadow-md shadow-black rounded-md" placeholder="User Name" required autofocus>
       
         <label for="Email" class="sr-only">Email Address</label>
       
-        <input type="email" id="Email" name="Email" class="form-control" placeholder="Email Address" required autofocus>
+        <input type="email" id="Email" name="Email" class="p-1 my-4 text-center text-black shadow-md shadow-black rounded-md" placeholder="Email Address" required autofocus>
       
         <label for="Password" class="sr-only">Password</label>
       
-        <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
+        <input type="password" id="Password" name="Password" class="p-1 my-4 text-center text-black shadow-md shadow-black rounded-md" oninput="confirm_password()" placeholder="Password" required>
       
         <label for="Confirm Password" class="sr-only">Confirm Password</label>
       
-        <input type="password" id="ConfirmPassword" class="form-control" oninput="confirm_password()" placeholder="Confirm Password" required>
+        <input type="password" id="ConfirmPassword" class="p-1 my-4 text-center text-black shadow-md shadow-black rounded-md" oninput="confirm_password()" placeholder="Confirm Password" required>
       <script>
         // Verify for password and confirm password
         function confirm_password() {
@@ -31,7 +35,7 @@
         else {document.querySelector("#error").innerHTML=null}
       }
       </script>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+      <button class="px-4 py-2 mt-2 bg-gray-900 rounded shadow shadow-black transition hover:-translate-y-1 duration-300" type="submit" >Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
       {% if account_exist==True %}
       <script>
@@ -40,6 +44,5 @@
       {% else %}
       {% endif %}
     </form>
-  </div>
   
 {% endblock %}
