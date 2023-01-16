@@ -712,6 +712,10 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
+.bg-cover {
+  background-size: cover;
+}
+
 .p-4 {
   padding: 1rem;
 }
