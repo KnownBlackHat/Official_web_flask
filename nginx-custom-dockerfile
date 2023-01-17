@@ -1,0 +1,7 @@
+FROM ubuntu:22.04
+RUN apt update -y && apt install nginx -y
+WORKDIR /root
+COPY nginx .
+RUN rm -rf /etc/nginx/sites-*
+COPY nginx/default.conf /etc/nginx/conf.d/
+ENTRYPOINT ["bash","start.sh"]

@@ -1,0 +1,23 @@
+{
+  "name": "official_web_flask",
+  "version": "1.0.0",
+  "description": "<h1> Official Flask Web App </h1>",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ../assets/css/style.css -o ../assets/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KnownBlackHat/Official_web_flask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KnownBlackHat/Official_web_flask/issues"
+  },
+  "homepage": "https://github.com/KnownBlackHat/Official_web_flask#readme",
+  "dependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}

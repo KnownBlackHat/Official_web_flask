@@ -1,0 +1,34 @@
+version: "3.7"
+
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.18.0.0/16
+
+services: 
+
+  nginx:
+    image: nginx-custom-dockerfile
+    build:
+      dockerfile: nginx-custom-dockerfile
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - mynetwork
+    ipv4_address: 172.18.0.100 
+    hostname: nginx
+
+  flask-app:
+    image: web-dockerfile
+    hostname: flask-app
+    build: 
+      dockerfile: web-dockerfile
+    restart: always
+    ports: 
+      - "8080:8080"
+    networks:
+      - mynetwork
+    ipv4_address: 172.18.0.101
