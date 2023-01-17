@@ -4,7 +4,7 @@
   "description": "<h1> Official Flask Web App </h1>",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ../assets/css/style.css -o ../assets/css/main.css"
+    "build": "npx tailwindcss -i ../web_app/static/style.css -o ../web_app/static/main.css"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,8 @@ import hashlib
 import json
 from threading import Thread
 from flask import Flask,render_template,request
-from security import hash,authenticate
+from security import hash,authenticate,DATA_FILE
+
 
 
 app=Flask(__name__)
@@ -29,7 +30,7 @@ def login():
 @app.route('/signup',methods=['POST','GET'])
 def signup():
     if request.method == "POST":
-        with open('data.json','r') as file:
+        with open(DATA_FILE,'r') as file:
             data = json.load(file)
         name = request.form.get('Name')
         email = request.form.get('Email')
@@ -40,7 +41,7 @@ def signup():
         data[email]["email"]=email
         data[email]["name"]=name
         data[email]["password"]=password
-        with open('data.json','w') as file:
+        with open(DATA_FILE,'w') as file:
             json.dump(data,file)
         
         return render_template('login.html', title="home",login=True)
