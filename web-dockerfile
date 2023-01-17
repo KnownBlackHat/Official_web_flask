@@ -4,4 +4,4 @@ WORKDIR /root
 COPY . .
 RUN python3.11 -m pip install -r web_app/requirements.txt
 ENTRYPOINT ["python3.11"]
-CMD ["backend/webserver.py"]
+CMD ["web_app/webserver.py"]
