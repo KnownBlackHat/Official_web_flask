@@ -1,7 +1,9 @@
-FROM ubuntu:22.04
-RUN apt update -y && apt install nginx -y
+FROM ubuntu:latest
 WORKDIR /root
 COPY nginx .
+RUN apt update -y && apt install nginx systemctl -y
 RUN rm -rf /etc/nginx/sites-*
 COPY nginx/default.conf /etc/nginx/conf.d/
-ENTRYPOINT ["bash","start.sh"]
+RUN chmod +x ./start.sh
+ENTRYPOINT ["./start.sh"]
+# ENTRYPOINT  ["nginx", "-g", "daemon off;"]
