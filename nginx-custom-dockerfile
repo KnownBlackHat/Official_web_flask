@@ -5,5 +5,5 @@ RUN apt update -y && apt install nginx systemctl -y
 RUN rm -rf /etc/nginx/sites-*
 COPY nginx/default.conf /etc/nginx/conf.d/
 RUN chmod +x ./start.sh
-ENTRYPOINT ["./start.sh"]
+CMD ["./start.sh"]
 # ENTRYPOINT  ["nginx", "-g", "daemon off;"]

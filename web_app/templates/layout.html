@@ -1,20 +1,32 @@
 <!doctype html>
 <html lang="en">
   <head>
+	<script>
+		document.onreadystatechange = ()=>{
+					if (document.readyState !== "complete") { 
+						document.querySelector("html").style.display="none";
+							}	
+					else {
+						document.querySelector("html").style.display="";
+							}
+				}
+	</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
-	<link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" media="all">
 	<script>
-		function size () {
 
 			const width = screen.width;
 			const height = screen.height;
-
-			document.querySelector("body").style.backgroundImage="url('https://source.unsplash.com/" + width + "x" + height +"/?technology,hackers')"
+			var img = new Image();
+			img.src = "https://source.unsplash.com/" + width + "x" + height + "/?technology,hackers"
+			img.onload = () => {
+			document.querySelector("body").style.backgroundImage="url(" + img.src +")"
 				}
 
 	</script>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}" media="all">
+
 	<title>{{ title }}</title>
 	<style>
 		body {
@@ -49,7 +61,7 @@
 	</style>
 	  </head>
 
-<body class="subpixel-antialiased text-white bg-cover" onload="size();check_active_nav_bar()">
+<body class="subpixel-antialiased text-white bg-cover" onload="check_active_nav_bar()">
 
 	<nav class="flex items-center justify-between p-4 text-white md:p-2 rounded-3xl bg-black/70">
 
